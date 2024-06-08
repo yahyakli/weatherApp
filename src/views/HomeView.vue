@@ -22,6 +22,14 @@
         </template>
       </ul>
     </div>
+    <div class="flex flex-col gap-4">
+      <Suspense>
+        <CityList />
+        <template #fallback>
+          <CityCardSkileton />
+        </template>
+      </Suspense>
+    </div>
   </main>
 </template>
 
@@ -29,6 +37,8 @@
 import axios from 'axios';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import CityList from '../components/CityList.vue';
+import CityCardSkileton from '../components/CityCardSkileton.vue';
 
 
 const router = useRouter();
