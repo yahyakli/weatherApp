@@ -1,5 +1,5 @@
 <template>
-    <header class="sticky top-0 bg-w-primary shadow-lg">
+    <header class="sticky top-0 bg-w-primary shadow-lg z-50">
         <nav class="container flex flex-col justify-between sm:flex-row items-start sm:items-center gap-4 text-white py-6">
             <router-link :to="{name:'home'}">
                 <div class="flex items-center gap-3 flex-1">
