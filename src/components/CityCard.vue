@@ -3,7 +3,6 @@
     class="flex py-6 px-3 bg-w-secondary rounded-md shadow-md cursor-pointer"
     >
     <div class="flex flex-col flex-1">
-        {{ console.log(city) }}
         <h2 class="text-3xl">{{ city.weather.name }}</h2>
         <h3>{{ city.state }}</h3>
     </div>

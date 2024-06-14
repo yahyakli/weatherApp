@@ -1,6 +1,6 @@
 
 <template>
-  <main class="container text-white">
+  <main class="container text-white py-4">
     <div class="pt-4 mb-8 relative">
       <input @input="getSearchResault" v-model="searchQuery" type="text" placeholder="Search for a city or state" class="py-2 px-1 w-full bg-transparent border-b focus:border-w-secondary focus:outline-0 focus:shadow-[0px_1px_0_0_#004E71]">
       <ul v-if="mapSearchResault" class="absolute bg-w-secondary text-white w-full shadow-md py-2 px-1 top-[66px]">
