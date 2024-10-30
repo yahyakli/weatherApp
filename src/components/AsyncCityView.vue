@@ -42,8 +42,8 @@
             </div>
         </div>
 
-        <!-- Remove City Button -->
-        <div class="flex items-center gap-2 py-12 text-white cursor-pointer duration-150 hover:text-red-500" @click="removeCity">
+        <!-- Conditionally Render Remove City Button -->
+        <div v-if="isCitySaved" class="flex items-center gap-2 py-12 text-white cursor-pointer duration-150 hover:text-red-500" @click="removeCity">
             <i class="fa-solid fa-trash"></i>
             <p>Remove City</p>
         </div>
@@ -58,6 +58,7 @@ import { useRoute, useRouter } from 'vue-router';
 const route = useRoute();
 const router = useRouter();
 const weatherData = ref(null);
+const isCitySaved = ref(false);
 
 const getWeatherData = async () => {
     try {
@@ -67,13 +68,17 @@ const getWeatherData = async () => {
 
         // Assign the response data to weatherData
         weatherData.value = response.data;
+
+        // Check if the city is saved in localStorage
+        const cities = JSON.parse(localStorage.getItem('savedCities')) || [];
+        isCitySaved.value = cities.some(city => city.id === route.query.id);
     } catch (err) {
         console.error("Error fetching weather data:", err);
     }
 };
 
-const cities = JSON.parse(localStorage.getItem('savedCities')) || [];
 const removeCity = () => {
+    const cities = JSON.parse(localStorage.getItem('savedCities')) || [];
     const updatedCities = cities.filter(city => city.id !== route.query.id);
     localStorage.setItem('savedCities', JSON.stringify(updatedCities));
     router.push({ name: 'home' });
